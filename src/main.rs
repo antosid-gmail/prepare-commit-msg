@@ -1,6 +1,6 @@
+use git2::{Error, Repository};
 use std::env;
 use std::fs;
-use git2::{Repository, Error};
 
 /// This is the main function of the program.
 /// It takes a commit message file as a command line argument and appends the branch name to the commit message.
