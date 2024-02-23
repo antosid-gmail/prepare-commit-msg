@@ -2,6 +2,10 @@ use std::env;
 use std::fs;
 use git2::{Repository, Error};
 
+/// This is the main function of the program.
+/// It takes a commit message file as a command line argument and appends the branch name to the commit message.
+/// The branch name is only appended if it is not empty and not equal to "master" or "main".
+/// The modified commit message is then written back to the commit message file.
 fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
 
