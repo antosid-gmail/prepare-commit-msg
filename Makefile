@@ -30,3 +30,7 @@ install:
 	fi
 	mkdir -p $(GIT_HOOKS_PATH)
 	cp target/release/prepare-commit-msg $(GIT_HOOKS_PATH)/prepare-commit-msg
+
+clean:
+	cargo clean
+	rm -rf target
