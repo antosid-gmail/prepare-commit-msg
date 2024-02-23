@@ -6,6 +6,6 @@ Adds a branch name in front of a git commit message
 
 
 ```bash
-git clone git@github.com:antosid-gmail/prepare-commit-msg.git
+git clone https://github.com/antosid-gmail/prepare-commit-msg.git
 cd prepare-commit-msg/
 make install
