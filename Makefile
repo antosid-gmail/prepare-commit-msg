@@ -33,3 +33,10 @@ install: release
 clean:
 	cargo clean
 	rm -rf target
+
+uninstall:
+	$(eval GIT_HOOKS_PATH := $(shell git config --global core.hooksPath))
+	@if [ -z "$(GIT_HOOKS_PATH)" ]; then \
+		GIT_HOOKS_PATH="~/.git_hooks"; \
+	fi
+	rm -f $(GIT_HOOKS_PATH)/prepare-commit-msg
