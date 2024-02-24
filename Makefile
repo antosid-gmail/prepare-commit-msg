@@ -8,6 +8,9 @@ rust-version:
 format:
 	cargo fmt
 
+lint:
+	cargo clippy
+
 test:
 	cargo test
 
@@ -17,9 +20,6 @@ run:
 release:
 	cargo build -r
 	strip target/release/prepare-commit-msg
-
-lint:
-	cargo clippy
 
 install: release
 	$(eval GIT_HOOKS_PATH := $(shell git config --global core.hooksPath))
