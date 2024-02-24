@@ -25,9 +25,10 @@ install: release
 	$(eval GIT_HOOKS_PATH := $(shell git config --global core.hooksPath))
 	@if [ -z "$(GIT_HOOKS_PATH)" ]; then \
 		GIT_HOOKS_PATH="~/.git_hooks"; \
+		mkdir -p $(GIT_HOOKS_PATH); \
+		git config --global core.hooksPath $(GIT_HOOKS_PATH); \
 	fi
-	mkdir -p $(GIT_HOOKS_PATH)
-	cp target/release/prepare-commit-msg $(GIT_HOOKS_PATH)/prepare-commit-msg
+	cp -u target/release/prepare-commit-msg $(GIT_HOOKS_PATH)/prepare-commit-msg
 	$(MAKE) clean
 
 clean:
