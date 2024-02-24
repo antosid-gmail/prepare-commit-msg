@@ -21,15 +21,14 @@ release:
 lint:
 	cargo clippy
 
-install:
-	cargo build -r
-	strip target/release/prepare-commit-msg
+install: release
 	$(eval GIT_HOOKS_PATH := $(shell git config --global core.hooksPath))
 	@if [ -z "$(GIT_HOOKS_PATH)" ]; then \
 		GIT_HOOKS_PATH="~/.git_hooks"; \
 	fi
 	mkdir -p $(GIT_HOOKS_PATH)
 	cp target/release/prepare-commit-msg $(GIT_HOOKS_PATH)/prepare-commit-msg
+	$(MAKE) clean
 
 clean:
 	cargo clean
