@@ -31,7 +31,7 @@ fn main() {
         Ok(name) => name,
         Err(err) => {
             eprintln!("Failed to get branch name: {}", err);
-            process::exit(1);
+            return;
         }
     };
 
