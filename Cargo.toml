@@ -7,3 +7,7 @@ edition = "2021"
 
 [dependencies]
 git2 = "0.18.2"
+
+[profile.release]
+lto = true
+debug = 0
