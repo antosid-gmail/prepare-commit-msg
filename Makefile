@@ -29,7 +29,6 @@ install: release
 		git config --global core.hooksPath $(GIT_HOOKS_PATH); \
 	fi
 	cp -u target/release/prepare-commit-msg $(GIT_HOOKS_PATH)/prepare-commit-msg
-	$(MAKE) clean
 
 clean:
 	cargo clean
