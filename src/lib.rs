@@ -3,15 +3,16 @@ use std::fs;
 use std::io::Error as IoError;
 
 pub fn get_branch_name() -> Result<String, GitError> {
-    let repo = Repository::open(".")?;
-    let x = match &repo.head() {
-        Ok(head) => match head.shorthand() {
-            Some(branch) => Ok(branch.to_string()),
-            None => Err(GitError::from_str("No branch name found")),
+    match Repository::open(".") {
+        Ok(repo) => match repo.head() {
+            Ok(head) => match head.shorthand() {
+                Some(branch) => Ok(branch.to_string()),
+                None => Err(GitError::from_str("No branch name found")),
+            },
+            _ => Err(GitError::from_str("No head found")),
         },
-        _ => Err(GitError::from_str("No head found")),
-    };
-    x
+        _ => Err(GitError::from_str("No repository found")),
+    }
 }
 
 pub fn update_commit_message(commit_msg_file: &str, branch_name: &str) -> Result<(), IoError> {
