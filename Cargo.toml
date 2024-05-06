@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-git2 = { version = "0.18.2", default-features = false }
+git2 = { version = "0.18.3", default-features = false }
 
 [profile.release]
 lto = true
